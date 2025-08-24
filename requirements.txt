@@ -1,0 +1,17 @@
+
+streamlit
+pandas
+googletrans==3.1.0a0
+pyttsx3==2.7
+PyGithub==1.55
+streamlit-aggrid==1.0.5
+gtts
+boto3
+Pillow
+streamlit-carousel
+langdetect==1.0.9
+mysql-connector-python==8.0.34
+numpy<2
+#pywin32
+
+
