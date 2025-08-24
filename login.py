@@ -2,16 +2,26 @@ import streamlit as st
 import mysql.connector
 from mysql.connector import Error
 import hashlib
+from dotenv import load_dotenv
+import os
+
+# ---------------- Load Environment Variables ----------------
+load_dotenv()  # loads .env file
+
+DB_HOST = os.getenv("DB_HOST")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_NAME = os.getenv("DB_NAME")
 
 # ---------------- MySQL Connection ----------------
 def create_connection():
     connection = None
     try:
         connection = mysql.connector.connect(
-            host="localhost",      # your host
-            user="root",           # your DB user
-            password="password",   # your DB password
-            database="users" # your database name
+            host=DB_HOST,      # from .env
+            user=DB_USER,      # from .env
+            password=DB_PASSWORD,  # from .env
+            database=DB_NAME   # from .env
         )
     except Error as e:
         st.error(f"Error connecting to MySQL: {e}")
@@ -26,7 +36,10 @@ def register_user(username, password):
     cursor = connection.cursor()
     hashed_password = hash_password(password)
     try:
-        cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, hashed_password))
+        cursor.execute(
+            "INSERT INTO users (username, password) VALUES (%s, %s)",
+            (username, hashed_password)
+        )
         connection.commit()
         st.success("User registered successfully!")
     except mysql.connector.Error as e:
@@ -39,7 +52,10 @@ def login_user(username, password):
     connection = create_connection()
     cursor = connection.cursor()
     hashed_password = hash_password(password)
-    cursor.execute("SELECT * FROM users WHERE username=%s AND password=%s", (username, hashed_password))
+    cursor.execute(
+        "SELECT * FROM users WHERE username=%s AND password=%s",
+        (username, hashed_password)
+    )
     user = cursor.fetchone()
     cursor.close()
     connection.close()
