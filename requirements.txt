@@ -12,6 +12,7 @@ streamlit-carousel
 langdetect==1.0.9
 mysql-connector-python==8.0.34
 numpy<2
+python-dotenv==1.1.1
 #pywin32
 
 
