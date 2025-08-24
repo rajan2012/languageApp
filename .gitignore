@@ -1,0 +1,54 @@
+config.ini
+.env
+
+.DS_Store          # macOS Finder metadata files
+Thumbs.db          # Windows thumbnail cache files
+.idea/             # IntelliJ IDEA IDE configuration
+.vscode/           # Visual Studio Code IDE configuration
+*.tmp              # Temporary files
+.env               # Environment configuration files
+.env.*             # Environment configuration files with specific extensions
+secrets.json       # JSON file containing sensitive data
+
+logs/              # Log files
+*.log              # Log files with specific extensions
+*.cache            # Cache files
+
+*.xml/
+*.iml/
+*.xml
+*.idea/.
+*.pkl
+*.toml/.
+*.toml
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# IDE settings (PyCharm)
+.idea/
+
+# VSCode settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Optional: compiled C extensions
+*.so
+
+# Optional: packages
+*.egg
+*.egg-info/
+dist/
+build/
